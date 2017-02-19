@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+	<head>
+		<title>awesome : life without Processing.js</title>
+		<style> canvas { border: 1px solid red; } </style>
+	</head>
+	<body>
+		<canvas id="awesome" width="window,innerWidth" height="window.innerHeight" ></canvas>
+		<input type=range id="storm" min=0 value=200 max=1000 step=1 onchange="changestormy(this.value)">
+ 
+		<script type="text/javascript">
+			var awesome=document.getElementById("awesome");
+			var ctx=awesome.getContext("2d"); // ctx is short for context
+
+			numberofsnowflakes = document.getElementById("storm").value;	
+			var snowflakes = [];
+			for (var i = 0 ; i < document.getElementById("storm").max; i++){
+				snowflakes[i] = {
+					x : 10,
+					y: 10,
+					wiggle: 2,
+				drift : function(){
+					if (this.y > awesome.height){
+						this.y = -15;
+					}
+					this.x = this.x + Math.random()*2-1;
+					//this.y = (Math.random() > 0.5)? this.y+1 : this.y-1; 
+					this.y = this.y + Math.random(); 
+					}
+				}
+				snowflakes[i].x = Math.random()*awesome.width;
+				snowflakes[i].y = Math.random()*awesome.height;
+			}
+	
+			function draw(){
+				ctx.clearRect(0, 0, awesome.width,awesome.height);
+
+				ctx.beginPath();	
+				for (var i = 0 ; i < numberofsnowflakes; i++){
+					ctx.rect(snowflakes[i].x, snowflakes[i].y, 10,10);
+					snowflakes[i].drift();
+				}
+				ctx.stroke();
+				ctx.closePath();	
+			};
+			
+			setInterval(draw, 50);// calling the draw function (loop) 10 times per second 
+					       //or 100ms internval
+			awesome.onclick = draw;
+			var stormy = document.getElementById("storm");
+			function changestormy (myvalue){
+				numberofsnowflakes = myvalue;
+			}
+
+		</script>
+	</body>
+</html>

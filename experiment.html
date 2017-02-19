@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Circles</title>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<style>
+			* {
+				margin: 0; padding: 0;
+			}
+			html, body {
+				height: 100%;
+				width: 100%;
+			}
+			canvas {
+				display: block;
+			}
+		</style>
+	</head>
+	
+	<body>
+		<div style="display:none;"> 
+			<img id="background" width="1920" height="1080" src="background.jpg" alt="background">
+    	</div>
+        <input type=range id="ballsNumber" min=0 value = 30 max = 50 step = 1 onchange ="changeNumber(this.value)"> 
+		<canvas id="myCanvas" width="500" height="500"></canvas>
+		<script type="text/javascript">
+			var canvas = $("#myCanvas");
+			var ctx = canvas.get(0).getContext("2d");
+			
+			$(window).resize(resizeCanvas);
+			function resizeCanvas() {
+				canvas.attr("width", $(window).get(0).innerWidth);
+				canvas.attr("height", $(window).get(0).innerHeight);
+				// ctx.fillRect(0,0,canvas.width(),canvas.height());
+		 	}
+		 	resizeCanvas();
+		 	
+		 	var numberofBalls = document.getElementById("ballsNumber").value;
+        
+		 	var balls = [];
+		 	for(var i = 0; i < document.getElementById("ballsNumber").max; i++) {
+            	balls[i] = {
+	                x: Math.random()*canvas.width(),
+	                y: Math.random()*canvas.height(),
+	                speedX: (Math.random()*2-1)*0.05,
+	                speedY: (Math.random()*2-1)*0.05,
+	                radius:  Math.random()*15 + 5,
+	                r : Math.floor(Math.random()*256),
+	                g : Math.floor(Math.random()*256),
+	                b : Math.floor(Math.random()*256),
+	                
+	                
+	                move : function() {
+	                    if(this.y >= canvas.height() - this.radius || this.y <= this.radius) {
+	                        this.speedY *= -1;
+	                    }
+	                    if(this.x >= canvas.width() - this.radius || this.x <= this.radius) {
+	                        this.speedX *= -1;
+	                    }
+	                    this.x += this.speedX;
+	                    this.y += this.speedY;
+	                }
+	            }
+	        }
+        
+        
+	        function draw() {
+		        ctx.clearRect(0,0,canvas.width(), canvas.height());
+		        var img = document.getElementById("background");
+				ctx.drawImage(img, 0, 0, canvas.width(), canvas.height());
+	
+	            
+	            for(var i = 0; i < numberofBalls; i++){
+		            ctx.beginPath();
+	                ctx.arc(balls[i].x, balls[i].y, balls[i].radius, 0, 2 * Math.PI, false);
+	                //  ctx.rect(balls[i].x, balls[i].y, 10, 10);
+	                balls[i].move();
+	                var rgb = "rgba("+balls[i].r+","+balls[i].g+","+balls[i].b+","+0.1+")";
+	                ctx.fillStyle = rgb;
+	                ctx.fill();
+	                ctx.beginPath();
+	                ctx.arc(balls[i].x, balls[i].y, balls[i].radius/10, 0, 2 * Math.PI, false);
+	                balls[i].move();
+	                var rgb2 =  "rgba("+0+", "+0+", "+0+", "+0.05+")";                
+	                ctx.fillStyle = rgb2;
+	                ctx.fill();
+	                
+	                
+	                for(var j = i + 1; j < numberofBalls; j++) {
+		                ctx.beginPath();
+		                ctx.arc(balls[j].x, balls[j].y, balls[j].radius, 0, 2*Math.PI, false);
+		                balls[j].move();
+		                var rgb = "rgba("+balls[j].r+","+balls[j].g+","+balls[j].b+","+0.05+")";
+		                ctx.fillStyle = rgb;
+		                ctx.fill();
+		                ctx.beginPath();
+		                ctx.arc(balls[j].x, balls[j].y, balls[j].radius/10, 0, 2 * Math.PI, false);
+	                    balls[i].move();
+	                    var rgb2 =  "rgba("+0+", "+0+", "+0+", "+0.05+")";
+	                    ctx.fillStyle = rgb2;
+	                    ctx.fill();
+	
+		                
+		                var dist = Math.sqrt((balls[i].x-balls[j].x)*(balls[i].x-balls[j].x) + (balls[i].y-balls[j].y)*(balls[i].y-balls[j].y));
+		                
+		                if(dist < 150){
+			                ctx.beginPath();
+			                ctx.moveTo(balls[i].x, balls[i].y);
+			                ctx.lineTo(balls[j].x, balls[j].y);
+			                var rgb = "rgba("+0+", "+0+", "+0+", "+0.2+")";
+			                ctx.strokeStyle = rgb;
+			                ctx.stroke();
+			                }
+		                }
+	                }
+	                ctx.beginPath();
+	                ctx.font = "24px Chalkboard";
+	                var rgb = "rgba("+0+", "+0+", "+0+", "+0.7+")";
+	                ctx.fillStyle = rgb;
+	                ctx.fillText("Programm! Experiments", canvas.width()/2 - 100, canvas.height()/2);
+	                ctx.font = "12px Chalkboard";
+	                /*
+                    var linkText1 = "Experiment1";
+	                ctx.fillText(linkText1, canvas.width()/2 - 85, canvas.height()/2 + 50);
+	                var linkWidth1 = ctx.measureText(linkText1).width;
+	                var linkHeight1 = ctx.measureText(linkText1).height;
+	                var linkText2 = "Experiment2";
+	                ctx.fillText(linkText2, canvas.width()/2 + 70, canvas.height()/2 + 50);
+	                var linkWidth2 = ctx.measureText(linkText2).width;
+	                var linkHeight2 = ctx.measureText(linkText2).height;
+*/
+/*
+	                canvas.addEventListener("mousemove", on_mousemove, false);
+    				canvas.addEventListener("click", on_click, false);
+*/
+	            }          
+	        
+	        setInterval(draw, 30);
+	        function changeNumber(myValue) {
+		        numberofBalls = myValue;
+	        }
+	        
+	       /*
+ var inLink1 = false;
+	        var inLink2 = false;
+	        
+	        function on_mousemove (ev) {
+				var x, y;
+ 
+				// Get the mouse position relative to the canvas element.
+				if (ev.layerX || ev.layerX) { //for firefox
+					x = ev.layerX;
+				    y = ev.layerY;
+				}
+				  x-=canvas.offsetLeft;
+				  y-=canvas.offsetTop;
+				 
+				  //is the mouse over the link?
+				  if(x>=canvas.width()/2 - 85 && x <= (canvas.width()/2 - 85 + linkWidth1) &&
+				     y<=canvas.height()/2 + 50 && y>= (canvas.height()/2 + 50-linkHeight1)){
+				      document.body.style.cursor = "pointer";
+				      inLink1=true;
+				  }
+				   if(canvas.width()/2 + 70 && x <= (canvas.width()/2 + 70 + linkWidth2) &&
+				     y<=canvas.height()/2 + 50 && y>= (canvas.height()/2 + 50-linkHeight2)){
+				      document.body.style.cursor = "pointer";
+				      inLink2=true;
+				  }
+
+				  
+				  else{
+				      document.body.style.cursor = "";
+				      inLink1=false;
+				      inLink2=false;
+				  }
+				}
+				 
+				//if the link has been clicked, go to link
+				function on_click(e) {
+				  if (inLink1)  {
+				    window.location = "experiment1.html";
+				  }
+				  if (inLink2)  {
+				    window.location = "experiment2.html";
+				  }
+
+				} 
+*/
+	        
+		</script>
+	</body>
+</html>

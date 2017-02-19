@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Glen Zhang | Interaction Designer</title>
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>  
+    <style type="text/css">
+	    
+	    html, body {
+		    width: 100%;
+		    height: 100%;
+		    margin: 0px;
+		    font-family: 'Montserrat', sans-serif;
+	    }
+	    
+	    
+	    canvas {	   
+		   display: block;
+		   width: 400px;
+		   height: 400px;
+	   }
+
+	   .firstLine {
+	   		-moz-animation-name: firstLineFadeIn;
+		    -moz-animation-iteration-count: 1;
+		    -moz-animation-timing-function: ease-out;
+		    -moz-animation-duration: 0.8s;
+
+		    -webkit-animation-name: firstLineFadeIn;
+		    -webkit-animation-iteration-count: 1;
+		    -webkit-animation-timing-function: ease-out;
+		    -webkit-animation-duration: 0.8s;
+
+		    animation-name: firstLineFadeIn;
+		    animation-iteration-count: 1;
+		    animation-timing-function: ease-out;
+		    animation-duration: 0.8s;
+	   }
+
+	   .secondLine {
+	   		-moz-animation-name: secondLineFadeIn;
+		    -moz-animation-iteration-count: 1;
+		    -moz-animation-timing-function: ease-out;
+		    -moz-animation-duration: 1s;
+
+		    -webkit-animation-name: secondLineFadeIn;
+		    -webkit-animation-iteration-count: 1;
+		    -webkit-animation-timing-function: ease-out;
+		    -webkit-animation-duration: 1s;
+
+		    animation-name: secondLineFadeIn;
+		    animation-iteration-count: 1;
+		    animation-timing-function: ease-out;
+		    animation-duration: 1s;
+	   }
+
+	   @-moz-keyframes firstLineFadeIn {
+		    0% {
+		    	-moz-transform: translateY(100px);	        
+		        -moz-opacity: 0;
+		    }
+		    100% {
+		    	-moz-transform: translateY(0px);	        
+		        -moz-opacity: 1;
+		    }
+		}
+		@-webkit-keyframes firstLineFadeIn {
+		    0% {
+		    	-webkit-transform: translateY(100px);	 		        
+		        -webkit-opacity: 0;
+		    }
+		    100% {
+		    	-webkit-transform: translateY(0);		        
+		        -webkit-opacity: 1;
+		    }
+		}
+		@keyframes firstLineFadeIn {
+		    0% {	
+		    	transform: translateY(100px);	        
+		        opacity: 0;
+		    }
+		    100% {	
+		    	transform: translateY(0);		        
+		        opacity: 1;
+		    }
+		}
+
+		@-moz-keyframes secondLineFadeIn {
+		    0% {	
+		    	-moz-transform: translateY(120px);        
+		        -moz-opacity: 0;
+		    }
+		    100% {  
+		    	-moz-transform: translateY(0px);     
+		        -moz-opacity: 1;
+		    }
+		}
+		@-webkit-keyframes secondLineFadeIn {
+		    0% {	
+		    	-webkit-transform: translateY(120px);	        
+		        -webkit-opacity: 0;
+		    }
+		    100% {	 
+		    	-webkit-transform: translateY(0px);       
+		        -webkit-opacity: 1;
+		    }
+		}
+		@keyframes secondLineFadeIn {
+		    0% {
+		    	transform: translateY(120px);		       
+		        opacity: 0;
+		    }
+		    100% {	
+		    	transform: translateY(0);		        
+		        opacity: 1;
+		    }
+		}
+
+		.menu {
+	   		-moz-animation-name: menuFadeIn;
+		    -moz-animation-iteration-count: 1;
+		    -moz-animation-timing-function: ease-out;
+		    -moz-animation-duration: 1s;
+
+		    -webkit-animation-name: menuFadeIn;
+		    -webkit-animation-iteration-count: 1;
+		    -webkit-animation-timing-function: ease-out;
+		    -webkit-animation-duration: 1s;
+
+		    animation-name: menuFadeIn;
+		    animation-iteration-count: 1;
+		    animation-timing-function: ease-out;
+		    animation-duration: 1s;
+	   }
+
+	   @-moz-keyframes menuFadeIn {
+		    0% {	
+		    	-moz-transform: translateY(50px);        
+		        -moz-opacity: 0;
+		    }
+		    100% {  
+		    	-moz-transform: translateY(0px);     
+		        -moz-opacity: 1;
+		    }
+		}
+		@-webkit-keyframes menuFadeIn {
+		    0% {	
+		    	-webkit-transform: translateY(50px);	        
+		        -webkit-opacity: 0;
+		    }
+		    100% {	 
+		    	-webkit-transform: translateY(0px);       
+		        -webkit-opacity: 1;
+		    }
+		}
+		@keyframes menuFadeIn {
+		    0% {
+		    	transform: translateY(50px);		       
+		        opacity: 0;
+		    }
+		    100% {	
+		    	transform: translateY(0);		        
+		        opacity: 1;
+		    }
+		}
+
+
+
+
+	   .outer {
+		    display: table;
+		    position: absolute;
+		    height: 100%;
+		    width: 100%;
+		}
+
+		.middle {
+		    display: table-cell;
+		    vertical-align: middle;
+		}
+
+		.inner {
+		    margin-left: auto;
+		    margin-right: auto; 
+		    width: 75%;
+		}
+
+		.canvas-wrap {
+			float: left;
+			width: 45%;
+			margin-right: 5%;
+		}
+
+		.words-wrap {
+			float: right;
+			width: 45%;
+			margin-left: 5%;
+		}
+
+		.menu {
+			margin-top: 20%;
+			text-align: center;
+		}
+
+		.link {
+			margin-left: 5%;
+			margin-right: 5%;
+			text-decoration: underline;
+			color: #000;
+			font-weight: bold;
+			font-size: 2rem;
+		}
+
+	   .group::before,
+	   .group::after {
+           content:'';
+           display: table;
+        }
+
+		.group::after {
+           clear: both;
+        }
+
+      //for IE6,7
+
+        .group {
+             *zoom: 1;
+        }
+
+       /* Media query for smartphones */
+
+        @media screen and (max-width: 990px) {
+        	.canvas-wrap {
+        		width: 100%;
+        		margin-right: 0;
+        		margin-top: 10%;
+        	}
+
+        	#paper {
+        		margin-left: auto;
+        		margin-right: auto;
+        	}
+        	
+        	.words-wrap {
+        		width: 100%;
+        		margin-left: 0;
+        		text-align: center;
+        		margin-top: 15%;
+        	}
+
+        	.words-wrap h1 {
+        		width: 90%;
+        		margin-left: auto;
+        		margin-right: auto;
+        	}
+
+        	.menu {
+        		margin-top: 10%;
+        	}
+
+        /*Media query for large laptop*/	
+
+        @media screen and (min-width: 1500px) {
+        	.inner {
+		    margin-left: auto;
+		    margin-right: auto; 
+		    width: 60%;
+		}
+
+		/*Media query for large desktop */
+
+		@media screen and (min-width: 1900px) {
+        	.inner {
+		    margin-left: auto;
+		    margin-right: auto; 
+		    width: 50%;
+		}
+
+        }
+
+
+  
+	</style>
+
+</head>
+
+<body>
+	<div class="outer">
+		<div class="middle">
+			<div class="inner group">
+				<div class="canvas-wrap">
+					<canvas id="paper" width="400" height="400"></canvas>
+				</div>
+				<div class="words-wrap">
+					<h1 class="firstLine">Hi, I'm Glen.</h1>
+					<h1 class="secondLine">I am an interaction designer on a mission to build enchanting experience and products.</h1>
+					<div class="menu">
+						<a href="#"><span class="link">Work</span></a>
+						<a href="#"><span class="link">About me</span></a>
+				</div>  
+			</div>
+		</div>
+	</div>
+    	
+    <script type="text/javascript">
+        var paper = document.getElementsByTagName("canvas")[0];
+        var ctx = paper.getContext("2d");
+        var particlesNumber = 40;
+                
+        var balls = [];
+        for(var i = 0; i < particlesNumber; i++) {
+           
+            balls[i] = {
+                x: 20,
+                y: 20,
+                speedX: (Math.random()*2-1)*0.06,
+                speedY: (Math.random()*2-1)*0.06,
+                radius:  Math.random(),
+                c: "#000000",
+                dice: Math.floor(Math.random()*5),           
+                
+                move : function() {
+	                
+                    if(Math.sqrt((this.x - paper.width/2)*(this.x - paper.width/2) + (this.y - paper.height/2)*(this.y - paper.height/2)) > paper.width/2) {
+                        this.speedY *= -1;
+                        this.speedX *= -1;
+                    }
+                    this.x += this.speedX;
+                    this.y += this.speedY;
+                },
+                
+                updateColor : function() {
+	                if(this.dice === 0) {
+		                this.c = "rgba("+5+", "+205+", "+229+", "+0.3+")";
+	                }
+	                if(this.dice === 1) {
+		                this.c = "rgba("+255+", "+184+", "+3+", "+0.3+")";
+	                }
+	                if(this.dice === 2) {
+		                this.c = "rgba("+255+", "+3+", "+91+", "+0.3+")";
+	                }
+	                if(this.dice === 3) {
+		                this.c = "rgba("+61+", "+62+", "+62+", "+0.3+")";
+	                }
+	                if(this.dice === 4) {
+		                this.c = "rgba("+214+", "+15+", "+255+", "+0.3+")"
+	                }
+                }
+            }
+            balls[i].x = Math.random()*paper.width;
+            balls[i].y = paper.height/2;
+        }
+
+
+        /*
+function ball(speedX,speedY) {
+	        arraynumber += 1
+	        this.posX = onclick.clientX;
+	        this.posY = onclick.clientY;
+	        this.x = posX;
+	        this.y = posY;
+	        this.speedX = speedX;
+	        this.speedY = speedY;
+	        
+	        this.move = function() {
+		        if(this.y >= paper.height - this.radius || this.y <= this.radius) {
+                        this.speedY *= -1;
+                    }
+                    if(this.x >= paper.width - this.radius || this.x <= this.radius) {
+                        this.speedX *= -1;
+                    }
+                    this.x += this.speedX;
+                    this.y += this.speedY;
+	        }
+        }
+*/
+        
+        function draw() {
+	        ctx.clearRect(0,0,paper.width, paper.height);
+	        ctx.beginPath();
+	        ctx.arc(paper.width/2, paper.height/2, paper.width/2, 0, 2* Math.PI, false);
+	        ctx.fillStyle = "black";
+	        ctx.fill();
+            
+            for(var i = 0; i < particlesNumber; i++){
+	            ctx.beginPath();
+                ctx.arc(balls[i].x, balls[i].y, balls[i].radius, 0, 2 * Math.PI, false);
+                //  ctx.rect(balls[i].x, balls[i].y, 10, 10);
+                balls[i].move();
+                balls[i].updateColor();
+                var rgb = balls[i].c;
+                ctx.fillStyle = rgb;
+                ctx.fill();                
+                
+                for(var j = i + 1; j < particlesNumber; j++) {
+	                ctx.beginPath();
+	                ctx.arc(balls[j].x, balls[j].y, balls[j].radius, 0, 2*Math.PI, false);
+	                balls[j].move();
+	                balls[j].updateColor();
+	                var rgb = balls[j].c;
+	                ctx.fillStyle = rgb;
+	                ctx.fill();
+	                	                
+	                var dist = Math.sqrt((balls[i].x-balls[j].x)*(balls[i].x-balls[j].x) + (balls[i].y-balls[j].y)*(balls[i].y-balls[j].y));
+	                
+	                if(dist < 60){
+		                for(var k = j + 1; k < particlesNumber; k++) {
+			                ctx.beginPath();
+			                ctx.arc(balls[k].x, balls[k].y, balls[k].radius, 0, 2*Math.PI, false);
+			                balls[k].move();
+			                balls[k].updateColor();
+			                var rgb = balls[k].c;
+	                        ctx.fillStyle = rgb;
+							ctx.fill();   		                
+		                    var dist = Math.sqrt((balls[j].x - balls[k].x)*(balls[j].x - balls[k].x) + (balls[j].y - balls[k].y)*(balls[j].y - balls[k].y));
+		                    if(dist < 60) {
+			                var path = new Path2D();
+			                path.moveTo(balls[i].x, balls[i].y);
+			                path.lineTo(balls[j].x, balls[j].y);
+			                path.lineTo(balls[k].x, balls[k].y);
+			                balls[i].updateColor();
+			                var rgb = balls[i].c;
+                            ctx.fillStyle = rgb;
+			                ctx.fill(path);   
+		                }
+		            }
+		        }
+	        }
+        }
+    }          
+        
+    setInterval(draw, 30);
+    </script>
+</body>
+</html>
